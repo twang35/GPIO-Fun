@@ -1,0 +1,13 @@
+{
+  "intents": [
+    {
+      "intent": "Command-with-Name",
+      "slots": [
+        {
+          "name": "NameCommand",
+          "type": "LIST_OF_NAMES"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+Sample utterances: "Alexa, launch ..."
+
+lights for open 1
+lights for open all
+lights for close 1
+lights for close all
+
