@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, make_response
-#import GPIO_Controller
+import GPIO_Controller
 
 app = Flask(__name__)
 
