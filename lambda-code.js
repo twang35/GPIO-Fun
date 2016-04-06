@@ -39,7 +39,7 @@ function onIntent(intentRequest, session, onIntentCallback) {
 
         // Call requestFunction to make the http.get call.
         // Get response from requestFunction using requestCallback
-        requestFunction(function requestCallback(err) {
+        requestFunction(nameCommand, function requestCallback(err) {
 
             // If error occurs during http.get request - respond with console.log
             if (err) {
@@ -54,42 +54,30 @@ function onIntent(intentRequest, session, onIntentCallback) {
 
 }
 
-function requestFunction(requestCallback) {
-    var post_data = {Stuff: 'foobar'};
-    var post_data_string = querystring.stringify(post_data);
+function requestFunction(nameCommand, requestCallback) {
+    var data = {Stuff: 'foobar'};
+    var data_string = querystring.stringify(data);
 
-    var post_options = {
+    var options = {
         host: '216.243.7.206',
         port: '8080',
-        path: '',
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Content-Length': Buffer.byteLength(post_data_string)
-        }
+        path: '/API?nameCommand=' + encodeURIComponent(nameCommand),
+        method: 'POST'
     };
 
-    var post_req = http.request(post_options, function(res) {
+    var req = http.request(options, function(res) {
         console.log("Got response: " + res.statusCode);
 
         // res.setEncoding('utf8');
         // res.on('data', function (chunk) {
         //     console.log("body: " + chunk);
         // });
-
-        console.log('t3');
         
         requestCallback(null);
     }).on('error', function (e) {
         console.log("Got error: ", e);
     });
-
-    console.log("POST data: " + post_data_string);
-
-    post_req.write(post_data_string);
-    console.log("t1");
-    post_req.end();
-    console.log("t2");
+    req.end();
 }
 
 // --------------- Helpers that build all of the responses -----------------------
