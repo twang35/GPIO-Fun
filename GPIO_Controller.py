@@ -5,16 +5,13 @@ from time import sleep
 # Config
 serPort = serial.Serial('/dev/ttyACM0', 19200, timeout=1)
 sleepTime = 0.25
-nameCommandMap = 	{
-						'on': 		[0,2],
-						'all on':	[0,2],
-						'off':		[1,3],
-						'all off':	[1,3],
-						'open all':	[0,2],
-						'close all':	[1,3]
-					}
-
-print 'does this work?'
+nameCommandMap = {	'on': 		[0,2],
+					'all on':	[0,2],
+					'off':		[1,3],
+					'all off':	[1,3],
+					'open all':	[0,2],
+					'close all':[1,3]
+				}
 
 def handlePOST(nameCommand):
 	if nameCommand in nameCommandMap:
