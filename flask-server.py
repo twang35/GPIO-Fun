@@ -7,12 +7,17 @@ from time import sleep
 # Config
 serPort = serial.Serial('/dev/ttyACM0', 19200, timeout=1)
 sleepTime = 0.25
-nameCommandMap = {	'on': 		[0,2],
-					'all on':	[0,2],
-					'off':		[1,3],
-					'all off':	[1,3],
-					'open all':	[0,2],
-					'close all':[1,3]
+powerPorts = [0,1,2,3]
+on1 = 7
+on2 = 5
+off1 = 6
+off2 = 4
+nameCommandMap = {	'on': 		[on1,on2],
+					'all on':	[on1,on2],
+					'off':		[off1,off2],
+					'all off':	[off1,off2],
+					'open all':	[on1,on2],
+					'close all':[off1,off2]
 				}
 
 def handlePOST(nameCommand):
@@ -34,6 +39,17 @@ def click(num):
 	serPort.write("gpio clear " + num + "\r")
 	return
 
+def powerOn(ports):
+	for port in ports:
+		serPort.write("gpio set " + str(port) + "\r")
+	return
+
+def powerOff(ports):
+	for port in ports:
+		serPort.write("gpio clear " + str(port) + "\r")
+	return
+
+powerOn(powerPorts)
 
 app = Flask(__name__)
 
