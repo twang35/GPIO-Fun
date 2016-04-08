@@ -34,9 +34,9 @@ def cycleThrough(ports):
 
 def click(num):
 	num = str(num)
-	serPort.write("gpio set " + num + "\r")
-	sleep(sleepTime)
 	serPort.write("gpio clear " + num + "\r")
+	sleep(sleepTime)
+	serPort.write("gpio set " + num + "\r")
 	return
 
 def powerOn(ports):
