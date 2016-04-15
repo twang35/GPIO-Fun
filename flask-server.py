@@ -5,7 +5,7 @@ import serial
 from time import sleep
 
 # Config
-serPort = serial.Serial('/dev/ttyACM0', 19200, timeout=1)
+serPort = serial.Serial('/dev/ttyACM1', 19200, timeout=1)
 sleepTime = 0.25
 powerPorts = [0,1,2,3]
 on1 = 7
@@ -18,10 +18,12 @@ nameCommandMap = {	'on': 		[on1,on2],
 					'all off':	[off1,off2],
 					'open all':	[on1,on2],
 					'close all':[off1,off2],
-					'on one':	[on1],
-					'on two':	[on2],
-					'off one':	[off1],
-					'off two':	[off2]
+					'on 1':		[on1],
+					'on 2':		[on2],
+					'on to':	[on2],
+					'off 1':	[off1],
+					'off 2':	[off2],
+					'off to':	[off2]
 				}
 
 def handlePOST(nameCommand):
