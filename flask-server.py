@@ -17,7 +17,11 @@ nameCommandMap = {	'on': 		[on1,on2],
 					'off':		[off1,off2],
 					'all off':	[off1,off2],
 					'open all':	[on1,on2],
-					'close all':[off1,off2]
+					'close all':[off1,off2],
+					'on one':	[on1],
+					'on two':	[on2],
+					'off one':	[off1],
+					'off two':	[off2]
 				}
 
 def handlePOST(nameCommand):
