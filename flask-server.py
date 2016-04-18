@@ -5,7 +5,7 @@ import serial
 from time import sleep
 
 # Config
-serPort = serial.Serial('/dev/ttyACM1', 19200, timeout=1)
+serPort = serial.Serial('/dev/ttyACM0', 19200, timeout=1)
 sleepTime = 0.25
 powerPorts = [0,1,2,3]
 on1 = 7
